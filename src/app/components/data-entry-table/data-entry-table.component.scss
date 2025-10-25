@@ -1,0 +1,43 @@
+.data-entry-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.form {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  // gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px 10px 0px;
+}
+
+.entries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.entries-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.no-entries {
+  color: #777;
+  text-align: center;
+  padding: 1rem;
+}
+.mat-mdc-card-title {
+  padding: 10px 0px 15px 0px;
+}
+.entries-section{
+  overflow-x: auto;
+}

@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+@use "@angular/material" as mat;
+
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: mat.$violet-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+html,
+body {
+  height: 100%;
+  --mat-sys-surface-container-low: #f9f9f9;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// global material design
+
+.mat-mdc-raised-button:not(:disabled) {
+  --mdc-protected-button-container-color: #9f7eeb;
+  --mdc-protected-button-label-text-color: white;
+  background-color: --mdc-protected-button-container-color;
+  color: --mdc-protected-button-label-text-color;
+}
+.mat-divider {
+  --mat-divider-color: #dadada;
+  border-top-color: --mat-divider-color;
+}
+.clear-btn{
+  background-color: red !important;
+}
+.clear-btn-icon{
+  background-color: rgb(179, 0, 0) !important;
+  color: white !important;
+}

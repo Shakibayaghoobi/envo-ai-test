@@ -1,0 +1,121 @@
+<div class="system-monitor-container">
+  <div class="monitor-header">
+    <h3>System Resource Monitor</h3>
+    <button
+      (click)="toggleMonitoring()"
+      [class.monitoring-active]="isMonitoring"
+      [class.monitoring-paused]="!isMonitoring"
+    >
+      {{ isMonitoring ? "⏸ Pause" : "▶ Resume" }}
+    </button>
+  </div>
+
+  <p class="subtitle">Real-time hardware resource monitoring</p>
+
+  <div class="stats-grid">
+    <!-- RAM -->
+    <div class="stat-card" [class]="getRamStatus()">
+      <div class="stat-icon">💾</div>
+      <div class="stat-details">
+        <h4>RAM Usage</h4>
+        <div class="stat-value">
+          {{ systemStats.ramUsed }} GB / {{ systemStats.ramTotal }} GB
+        </div>
+        <div class="stat-percentage">
+          {{
+            (systemStats.ramUsed / systemStats.ramTotal) * 100
+              | number : "1.1-1"
+          }}%
+        </div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            [style.width.%]="(systemStats.ramUsed / systemStats.ramTotal) * 100"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CPU -->
+    <div class="stat-card" [class]="getCpuStatus()">
+      <div class="stat-icon">⚡</div>
+      <div class="stat-details">
+        <h4>CPU Usage</h4>
+        <div class="stat-value">{{ systemStats.cpuUsage }}%</div>
+        <div class="stat-percentage">
+          {{
+            systemStats.cpuUsage < 50
+              ? "Normal"
+              : systemStats.cpuUsage < 75
+              ? "Moderate"
+              : "High"
+          }}
+        </div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            [style.width.%]="systemStats.cpuUsage"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Network -->
+    <div class="stat-card" [class]="getNetworkStatus()">
+      <div class="stat-icon">🌐</div>
+      <div class="stat-details">
+        <h4>Network Speed</h4>
+        <div class="stat-value">{{ systemStats.networkSpeed }} Mbps</div>
+        <div class="stat-percentage">
+          {{
+            systemStats.networkSpeed > 50
+              ? "Fast"
+              : systemStats.networkSpeed > 10
+              ? "Moderate"
+              : "Slow"
+          }}
+        </div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            [style.width.%]="
+              systemStats.networkSpeed > 100 ? 100 : systemStats.networkSpeed
+            "
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disk -->
+    <div class="stat-card" [class]="getDiskStatus()">
+      <div class="stat-icon">💿</div>
+      <div class="stat-details">
+        <h4>Disk Usage</h4>
+        <div class="stat-value">{{ systemStats.diskUsage }}%</div>
+        <div class="stat-percentage">
+          {{
+            systemStats.diskUsage < 60
+              ? "Healthy"
+              : systemStats.diskUsage < 80
+              ? "Moderate"
+              : "High"
+          }}
+        </div>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            [style.width.%]="systemStats.diskUsage"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="monitor-info">
+    <p>
+      @if(isMonitoring) {
+      <span> Updates every 2 seconds.</span>
+      }
+    </p>
+  </div>
+</div>

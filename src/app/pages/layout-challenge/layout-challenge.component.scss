@@ -1,0 +1,38 @@
+.messy-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.table-component {
+  max-width: 40%;
+  min-width: 25%;
+  // height: auto;
+  // display: flex;
+}
+
+.monitor-component {
+  max-width: calc(100% - 15px);
+  width: 100%;
+}
+
+.messy-layout::after {
+  content: "";
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .messy-layout {
+    flex-wrap: wrap;
+  }
+  .table-component {
+    min-width: 100%;
+  }
+}
+@media (max-width: 992px) and (min-width: 769px) {
+  .table-component {
+    min-width: 40%;
+  }
+}
