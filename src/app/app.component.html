@@ -1,12 +1,25 @@
 <div class="app-container">
   <nav class="navigation">
-    <h1>Frontend Developer Assessment ANGULAR</h1>
-    <div class="nav-links">
-      <a routerLink="/" routerLinkActive="active" class="nav-link"
-        >Challenge 1: Layout Fix</a
+    <h1>Assessment in Angular</h1>
+
+    <button mat-icon-button class="menu-btn" (click)="toggleMenu()">
+      <mat-icon>{{ showMenu ? "close" : "menu" }}</mat-icon>
+    </button>
+
+    <div class="nav-links" [class.show]="showMenu">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        class="nav-link"
+        (click)="toggleMenu()"
+        >Layout Fix</a
       >
-      <a routerLink="/" routerLinkActive="active" class="nav-link"
-        >Challenge 2: Layout Fix</a
+      <a
+        routerLink="/bug-hunt"
+        routerLinkActive="active"
+        class="nav-link"
+        (click)="toggleMenu()"
+        >Bug Hunt</a
       >
     </div>
   </nav>

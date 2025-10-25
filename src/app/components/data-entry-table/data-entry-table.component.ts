@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
+import { RouterLinkActive } from '@angular/router';
 interface Entry {
   id: number;
   name: string;
@@ -26,6 +27,7 @@ interface Entry {
     MatCardModule,
     MatIconModule,
     MatDividerModule,
+    RouterLinkActive
   ],
   templateUrl: './data-entry-table.component.html',
   styleUrl: './data-entry-table.component.scss',
@@ -33,7 +35,14 @@ interface Entry {
 export class DataEntryTableComponent implements OnInit {
   formData = { name: '', email: '', department: '', phone: '' };
   entries: Entry[] = [];
-  displayedColumns: string[] = ['name', 'email', 'department', 'phone', 'timestamp', 'action'];
+  displayedColumns: string[] = [
+    'name',
+    'email',
+    'department',
+    'phone',
+    'timestamp',
+    'action',
+  ];
 
   ngOnInit(): void {
     const saved = localStorage.getItem('userEntries');
@@ -55,13 +64,19 @@ export class DataEntryTableComponent implements OnInit {
       id: Date.now(),
       timestamp: new Date().toLocaleString(),
     };
+
     this.entries.push(newEntry);
+    this.entries = [...this.entries]; // create a new array reference, triggering Angular
+
     this.saveEntries();
+
+    // Reset form
     this.formData = { name: '', email: '', department: '', phone: '' };
   }
 
   deleteEntry(id: number) {
     this.entries = this.entries.filter((e) => e.id !== id);
+    this.entries = [...this.entries]; // <---- Important line
     this.saveEntries();
   }
 

@@ -1,9 +1,9 @@
 .system-monitor-container {
   background: white;
-  padding: 1.5rem;
+  padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.571);
+  min-height: 458px;
 }
 
 .monitor-header {
@@ -18,22 +18,36 @@
   margin: 0;
 }
 
-// .monitoring-active {
-//   background: #28a745;
-// }
+button {
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
-// .monitoring-active:hover {
-//   background: #218838;
-// }
+button.monitoring-active {
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+}
+button.monitoring-active:hover {
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+}
 
-// .monitoring-paused {
-//   background: #ffc107;
-//   color: #333;
-// }
+button.monitoring-paused {
+  background: linear-gradient(135deg, #e53935, #ef5350);
+}
+button.monitoring-paused:hover {
+  background: linear-gradient(135deg, #c62828, #e53935);
+}
 
-// .monitoring-paused:hover {
-//   background: #e0a800;
-// }
+button:active {
+  transform: scale(0.97);
+}
 
 .stats-grid {
   display: grid;
@@ -44,11 +58,11 @@
 
 .stat-card {
   background: #f8f9fa;
-  padding: 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   border-left: 4px solid #667eea;
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   transition: transform 0.2s ease;
 }
 
@@ -83,7 +97,7 @@
 .stat-details h4 {
   color: #555;
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   font-weight: 600;
 }
 
@@ -128,10 +142,10 @@
 }
 
 .monitor-info {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   padding: 1rem;
-  background: #fff3cd;
-  border-left: 4px solid #ffc107;
+  background: #b8b8b85e;
+  border-left: 4px solid #764ba2;
   border-radius: 4px;
 }
 
@@ -145,11 +159,10 @@
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .monitor-header {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
   }
 }
-

@@ -9,8 +9,6 @@
 .table-component {
   max-width: 40%;
   min-width: 25%;
-  // height: auto;
-  // display: flex;
 }
 
 .monitor-component {
@@ -18,9 +16,10 @@
   width: 100%;
 }
 
-.messy-layout::after {
-  content: "";
-  display: block;
+@media (max-width: 992px) and (min-width: 769px) {
+  .table-component {
+    min-width: 40%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -30,9 +29,7 @@
   .table-component {
     min-width: 100%;
   }
-}
-@media (max-width: 992px) and (min-width: 769px) {
-  .table-component {
-    min-width: 40%;
+  .monitor-component {
+    max-width: 100%;
   }
 }

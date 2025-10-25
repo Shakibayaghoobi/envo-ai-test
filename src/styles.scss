@@ -34,10 +34,17 @@ body {
   --mat-divider-color: #dadada;
   border-top-color: --mat-divider-color;
 }
-.clear-btn{
+.clear-btn {
   background-color: red !important;
 }
-.clear-btn-icon{
+.clear-btn-icon {
   background-color: rgb(179, 0, 0) !important;
   color: white !important;
+}
+.mat-mdc-card {
+  --mdc-elevated-card-container-elevation: 0 2px 8px rgba(0, 0, 0, 0.571);
+  box-shadow: var(
+    --mdc-elevated-card-container-elevation,
+    var(--mat-sys-corner-medium)
+  );
 }

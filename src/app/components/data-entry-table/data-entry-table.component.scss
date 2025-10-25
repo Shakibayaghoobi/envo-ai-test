@@ -33,11 +33,14 @@
 .no-entries {
   color: #777;
   text-align: center;
-  padding: 1rem;
 }
 .mat-mdc-card-title {
-  padding: 10px 0px 15px 0px;
+  font-size: 1.17em;
+  font-weight: bold;
+  padding: 16px 0px 16px 0px;
 }
-.entries-section{
+.entries-section {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 250px;
 }

@@ -1,10 +1,9 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatButton } from "@angular/material/button";
 
 @Component({
   selector: 'app-system-monitor-table',
-  imports: [DecimalPipe, MatButton],
+  imports: [DecimalPipe],
   templateUrl: './system-monitor-table.component.html',
   styleUrl: './system-monitor-table.component.scss',
 })
@@ -40,7 +39,10 @@ export class SystemMonitorTableComponent implements OnInit, OnDestroy {
   toggleMonitoring() {
     this.isMonitoring = !this.isMonitoring;
   }
-  getStatusColor(value: number, thresholds: { good: number; warning: number }): string {
+  getStatusColor(
+    value: number,
+    thresholds: { good: number; warning: number }
+  ): string {
     if (value < thresholds.good) return 'status-good';
     if (value < thresholds.warning) return 'status-warning';
     return 'status-critical';
@@ -52,7 +54,8 @@ export class SystemMonitorTableComponent implements OnInit, OnDestroy {
   }
 
   getRamStatus(): string {
-    const percentage = (this.systemStats.ramUsed / this.systemStats.ramTotal) * 100;
+    const percentage =
+      (this.systemStats.ramUsed / this.systemStats.ramTotal) * 100;
     return this.getStatusColor(percentage, { good: 60, warning: 80 });
   }
 
