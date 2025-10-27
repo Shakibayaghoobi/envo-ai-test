@@ -1,0 +1,101 @@
+<div class="page-container">
+  <h2 class="page-title">Challenge 2: Bug Hunt (Angular Version)</h2>
+
+  <!-- Counter -->
+  <section class="card">
+    <h3>Counter Feature</h3>
+    <p>Counter: {{ counter }}</p>
+    <small class="hint">⚠️ Refresh to see counter behavior</small>
+  </section>
+
+  <!-- Login -->
+  <section class="card">
+    <h3>User Login</h3>
+    @if (isLoggedIn) {
+
+    <div>
+      <p class="success">✅ Welcome, {{ username }}!</p>
+      <button class="btn danger" (click)="handleLogout()">Logout</button>
+    </div>
+    }@else {
+
+      <p>❌ Please log in</p>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        placeholder="Enter username"
+        class="input"
+      />
+      <button class="btn primary" (click)="handleLogin()">Login</button>
+    }
+
+    <p class="hint">Try logging in with a username (3+ chars)</p>
+  </section>
+
+  <!-- Shopping Cart -->
+  <section class="card">
+    <h3>Shopping Cart</h3>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of items; track $index) {
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>${{ item.price }}</td>
+          <td>
+            <input
+              type="number"
+              class="qty-input"
+              [value]="item.quantity"
+              (input)="updateQuantity(item.id, $any($event.target).value)"
+              min="0"
+            />
+          </td>
+          <td>${{ (item.price * item.quantity).toFixed(2) }}</td>
+          <td>
+            <button class="btn danger small" (click)="removeItem(item.id)">
+              Remove
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="cart-totals">
+      <div class="total-row">
+        <span>Subtotal:</span>
+        <strong>${{ total.toFixed(2) }}</strong>
+      </div>
+
+      <div class="discount-input">
+        <label>Discount (%):</label>
+        <input
+          type="number"
+          [(ngModel)]="discount"
+          min="0"
+          max="100"
+          class="input small"
+        />
+      </div>
+
+      <div class="total-row final">
+        <span>Final Total:</span>
+        <strong>${{ finalTotal.toFixed(2) }}</strong>
+      </div>
+    </div>
+
+    <p class="hint">
+      Try updating quantities, removing items, and applying a discount
+    </p>
+  </section>
+</div>
