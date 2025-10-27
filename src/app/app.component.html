@@ -10,6 +10,7 @@
       <a
         routerLink="/"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
         class="nav-link"
         (click)="toggleMenu()"
         >Layout Fix</a
@@ -17,6 +18,7 @@
       <a
         routerLink="/bug-hunt"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
         class="nav-link"
         (click)="toggleMenu()"
         >Bug Hunt</a

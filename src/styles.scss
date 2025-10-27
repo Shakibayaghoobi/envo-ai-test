@@ -1,7 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
-
+@use "tailwindcss";
 html {
   color-scheme: light;
   @include mat.theme(
@@ -47,4 +47,16 @@ body {
     --mdc-elevated-card-container-elevation,
     var(--mat-sys-corner-medium)
   );
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  --mdc-filled-text-field-container-color: #d7d7d72e;
+  background-color: var(--mdc-filled-text-field-container-color);
+}
+app-bug-hunt {
+  .mat-mdc-table thead {
+    background: #ac9cbb2e;
+  }
+  .mat-mdc-table tfoot {
+    background: #dcdcdc2e;
+  }
 }

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 interface Item {
   id: number;
   name: string;
@@ -8,7 +14,15 @@ interface Item {
 }
 @Component({
   selector: 'app-bug-hunt',
-  imports: [FormsModule],
+  imports: [
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+  ],
   templateUrl: './bug-hunt.component.html',
   styleUrl: './bug-hunt.component.scss',
 })
@@ -22,9 +36,19 @@ export class BugHuntComponent implements OnInit {
   discount = 0;
   username = '';
   isLoggedIn = false;
-  ngOnInit(): void {
+  displayedColumns = ['name', 'price', 'quantity', 'subtotal', 'actions'];
+
+  ngOnInit(): void {}
+  increment() {
+    // In React => Every time the counter changes, the effect runs again
+    // In Angular => I fixed this by using an Increment button
     this.counter++;
   }
+
+  get totalQuantity(): number {
+    return this.items.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
   get total(): number {
     return this.items.reduce(
       (sum, item) => sum + item.price * item.quantity,
