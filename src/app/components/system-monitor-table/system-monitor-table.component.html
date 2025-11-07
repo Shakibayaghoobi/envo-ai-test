@@ -13,7 +13,6 @@
   <p class="subtitle">Real-time hardware resource monitoring</p>
 
   <div class="stats-grid">
-    <!-- RAM -->
     <div class="stat-card" [class]="getRamStatus()">
       <div class="stat-icon">💾</div>
       <div class="stat-details">
@@ -36,7 +35,6 @@
       </div>
     </div>
 
-    <!-- CPU -->
     <div class="stat-card" [class]="getCpuStatus()">
       <div class="stat-icon">⚡</div>
       <div class="stat-details">
@@ -60,7 +58,6 @@
       </div>
     </div>
 
-    <!-- Network -->
     <div class="stat-card" [class]="getNetworkStatus()">
       <div class="stat-icon">🌐</div>
       <div class="stat-details">
@@ -86,7 +83,6 @@
       </div>
     </div>
 
-    <!-- Disk -->
     <div class="stat-card" [class]="getDiskStatus()">
       <div class="stat-icon">💿</div>
       <div class="stat-details">

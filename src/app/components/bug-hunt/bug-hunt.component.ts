@@ -26,7 +26,7 @@ interface Item {
   templateUrl: './bug-hunt.component.html',
   styleUrl: './bug-hunt.component.scss',
 })
-export class BugHuntComponent implements OnInit {
+export class BugHuntComponent {
   counter = 0;
   items: Item[] = [
     { id: 1, name: 'Item 1', price: 10, quantity: 1 },
@@ -38,28 +38,30 @@ export class BugHuntComponent implements OnInit {
   isLoggedIn = false;
   displayedColumns = ['name', 'price', 'quantity', 'subtotal', 'actions'];
 
-  ngOnInit(): void {}
   increment() {
     // In React => Every time the counter changes, the effect runs again
     // In Angular => I fixed this by using an Increment button
     this.counter++;
   }
-
+  // New feature
   get totalQuantity(): number {
     return this.items.reduce((sum, item) => sum + item.quantity, 0);
   }
 
+  // In React used "=" instead of "*" for total
   get total(): number {
     return this.items.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0
     );
   }
+  // In React: discount added instead of subtracted
 
   get finalTotal(): number {
     return this.total - this.total * (this.discount / 100);
   }
 
+  // In React => login/logout states reversed
   handleLogin(): void {
     if (this.username.trim().length < 3) {
       alert('Username must be at least 3 characters');
@@ -72,13 +74,15 @@ export class BugHuntComponent implements OnInit {
     this.isLoggedIn = false;
     this.username = '';
   }
-
+  //In React : missing item fields after quantity update
   updateQuantity(id: number, newQuantity: number): void {
     this.items = this.items.map((item) =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
+    const quantities = this.items.map((q) => q.quantity);
+    localStorage.setItem('quantities', JSON.stringify(quantities));
   }
-
+  //  wrong filter condition (== instead of !==)
   removeItem(id: number): void {
     this.items = this.items.filter((item) => item.id !== id);
   }
